@@ -1,0 +1,11 @@
+{
+  "name": "mongodb-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "bruhtus <hibruhtus@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "mongodb": "3.6.2"
+  }
+}
