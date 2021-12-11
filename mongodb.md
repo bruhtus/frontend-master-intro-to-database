@@ -9,6 +9,7 @@ The command to run `MongoDB` inside of docker:
 # `<outside-docker>` means the port on you local machine that run docker container.
 # `--rm` means, when we're done, just remove automatically afterwards
 # `mongo:4.4.1` is the name of the container that we'll be pulling off of Docker Hub is `mongo` and the `:4.4.1` means the version 4.4.1
+
 docker run --name test-mongo -dit -p 27017:27017 --rm mongo:4.4.1
 
 # if the mongodb.service is active, probably the port already in use
@@ -51,6 +52,7 @@ We can create an `adoption` database using this command:
 # dynamic in nature, so it just rolls with it like "you want something called
 # `adoption`? here you go. i don't actually have something like that,
 # but you can have it now"
+
 use adoption
 ```
 
@@ -76,6 +78,7 @@ Let's say we want to make a database of pets, and let's insert a document into t
 # `pets` is the name of collection that we're about to create
 # `insertOne()` is a function that you give a javascript object and it's gonna
 # turn that into a document in our database
+
 db.pets.insertOne({ name: "luna", type: "dog", breed: "havanese", age: 8 })
 ```
 
@@ -345,6 +348,7 @@ the way to do that is with a logical operator like this:
 ```sh
 # $and to get multiple different conditions evaluating the true
 # $and is an array of things that have to be true
+
 db.pets.count({type: "bird", $and: [{age: {$gte: 4}}, {age: {$lte: 8}}]})
 ```
 
@@ -382,14 +386,17 @@ We use something called projection to do that, like this:
 # the query you want to search, which in this case is `type: "dog"`
 # and the component you want to include, in this case is `name`
 # if the component doesn't exist, it will only print the `_id`
+
 db.pets.find({ type: "dog" }, { name: 1 })
 
 # we can also ommitted the `_id` with something like this
 # we can use `1` and `0`, or `true` and `false`
+
 db.pets.find({ type: "dog" }, { name: 1, _id: 0 })
 
 # we can also exclude the things that we don't want
 # include everything except `_id`
+
 db.pets.find({ type: "dog" }, { _id: 0 })
 ```
 
@@ -409,6 +416,7 @@ There are two commands we can use, `updateOne()` and `updateMany()`.
 # this is the exact same object that you provide to `find()` or `findOne()` or `find()`
 # the second thing that you're going to give is how do you want to update the object
 # `$set` basically merge the object into the existing object
+
 db.pets.updateOne(
   { type: "dog", name: "Luna", breed: "Havanese" },
   { $set: { owner: "Bruhtus" }}
@@ -432,6 +440,7 @@ Let's say today is the birthday of every dogs, we can do something like this:
 # `$inc` for increment
 # `1` is the total number we want to increment, if we use `2` instead of `1`
 # it will increase by two, not one
+
 db.pets.updateMany(
   { type: "dog" },
   { $inc: { age: 1 }}
@@ -455,6 +464,7 @@ Let's say we want to put the dog named `Sudo`, we can do something like this:
 # that the new object.
 # so we have to provide everything, otherwise it will be lacking.
 # `upsert: true` basically says, if you don't find it, insert it.
+
 db.pets.updateOne(
   { type: "dog", name: "Sudo", breed: "Wheaten" },
   { $set: { type: "dog", name: "Sudo", breed: "Wheaten", age: 5, index: 10000, owner: "Sarah Drasner" }},
@@ -482,6 +492,7 @@ such a thing as havanese reptiles, we can do something like this:
 ```sh
 # we delete many documents, so we need to be careful about this
 # because we can delete documents that we don't want to.
+
 db.pets.deleteMany({ type: "reptile", breed: "Havanese" })
 ```
 
