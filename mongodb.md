@@ -214,7 +214,7 @@ The output would be something like this:
 > Notice that there's a `_id` in the output? That's the ID the MongoDB created.
 > That is guaranteed unique as well.
 
-> Does it always find the same one? Or it just find a random one?
+Does it always find the same one? Or it just find a random one?
 > No, it's ambiguous and you never want to rely on ambiguous behavior.
 
 ## Example
