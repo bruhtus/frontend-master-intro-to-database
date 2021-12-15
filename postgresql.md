@@ -3,10 +3,14 @@
 The command to run `Postgres` inside of docker:
 ```sh
 # we need to give postgres a login password or it will not start for us
+
 # `-p` is the port we want to use, the structure would be like this:
 # <outside-docker>:<inside-docker>. outside docker means, in our local machine
 # port.
+
 # `-d` for detach, `--rm` means remove the log when we're done.
+
+# `-e` is for environment variable to give postgres password.
 
 docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d --rm postgres:13.0
 
