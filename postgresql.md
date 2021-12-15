@@ -1176,6 +1176,9 @@ ERROR:  duplicate key value violates unique constraint "users_username_key"
 DETAIL:  Key (username)=(aaizikovj) already exists.
 ```
 
+**JSON in postgres can be useful but querying in it is not as nice as in NoSQL
+database such as MongoDB**.
+
 > For more types of index in postgres, you can check [this website](https://www.postgresql.org/docs/13.0/indexes.html).
 
 ## Node.js App with PostgreSQL
