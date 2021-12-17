@@ -83,7 +83,7 @@ It's schemaless.
 > If your server crash, you can restore it back to where it was.
 > And that's just means it's writing to disk successfully and it means your data is durable to a crash.
 
-**ACID is safe but it's slow**
+**ACID is safe but it's slow**.
 
 > For example, something like durability means if your query is durable,
 > it means that it's not only writing to the main server but it's actually
@@ -207,6 +207,96 @@ where the expensive queries are. And then create indexes for those queries**.
 > Usually you don't want to go too much in advance and prematurely optimizing
 > because bad indexes and useless indexes just slow down your computer or your
 > searches, and waste a lot of space.
+
+## Graph Database
+
+Graph database is more intended to solve a specific problem and less meant
+to be general purpose.
+
+> Graph database is not meant to power an e-commerce website.
+
+> A good use case for graph databases (and probably where they got pushed
+> forward a lot) is social networks.
+>
+> Imagine we're on LinkedIn, we're connected to X person, X person connected
+> to Y person, and so on. And that's how LinkedIn knows how to recommend.
+>
+> LinkedIn be like:<br>
+> "Hey, you probably know this person because you know 10 people and the all
+> know this person and they're connected to this person and you're not. Decent
+> chance that as so many people in your network know this person, you also
+> probably know that person."
+
+### Terminology
+
+#### Nodes/Entities
+
+> The correct term for `Neo4j` (which is the graph database tool that we're
+> going to use in this course) is a node.
+
+A node is basically a row or a document in a graph database. A node represent
+something.
+
+For example, in this course we'll be looking at movies and people and there'll
+be two kinds of nodes that we're gonna have:
+- A person node.
+- A movies node.
+
+> Something that specific to `Neo4j` is one node can actually be multiple
+> different things.
+>
+> Let's say, instead of having just a person label, you can have one person be
+> both an actor label, or actress label, or director label.
+
+A node can have multiple different kinds of labels.
+
+In this course, the only two labels we're gonna be looking in this course are
+persons (which will represents both actors, actress, and directors) and movies.
+
+> We can also have each label that represent actors, actress, and directors.
+> So we can have three labels instead of one label which is called person.
+
+#### Relationships/Edges
+
+> The correct term for `Neo4j` is relationship.
+
+Relationship/Edges describe this node is related to this other node and we're
+gonna draw some sort of connection line between the two of those things.
+
+The power of graph database is that we can describe this kind of graph like
+a web of relationship between different things.
+
+> Another specific thing about `Neo4j` is every relationship is directional.
+>
+> Let's use an example from a social network:
+> - On facebook, when you're connected to someone, the other person need to
+> accept your request. That's relationship has no direction, we can't have
+> that be one way.
+> - On twitter, if we follow someone, that person doesn't need to follow us
+> back. That's a directional relationship. Let's say we follow each other, then
+> we need two different relationship.
+>
+> So, in `Neo4j` all of these relationships have direction associated with
+> them. And sometimes you can just ignore those direction if you don't really
+> care about them, but every relationship is going to have a direction.
+
+#### Properties
+
+Every relationship and every node can have properties associated with them.
+
+For example, if we're talking about a person, they can have a birthday, hair
+color, eye color, etc. Those will be the attributes of that particular node.
+
+A relationship can also have an attributes.
+
+An example of relationship with attributes:<br>
+Let's say there's a person acting in the movie, the relationship can have the
+role that they played in the movie, the relationship can have the year that
+happened, the relationship can have the episode they played in, etc.
+
+Those are the attributes that a relationship can have.
+
+[Neo4j Notes](./neo4j.md)
 
 ## References
 
