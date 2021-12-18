@@ -298,6 +298,65 @@ Those are the attributes that a relationship can have.
 
 [Neo4j Notes](./neo4j.md)
 
+## Key-Value Store
+
+So far we've learned about document-based database, relational database, and
+graph database. They're more used for storing data or original source of truth.
+
+A key-value store is an entirely different database and used in an entirely
+different way. Usually it's a companion to another database.
+
+We can think of a key-value store as the **world's largest javascript object**
+where we can set a key on an object to be some sort of value, and then later
+we can come back and say "give us back the key that we stored in this
+particular object".
+
+> That ends up being really useful for a couple of things, one of them is for
+> caching.
+>
+> For example:<br>
+> If we have some sort of very expensive operation to do and we don't want to
+> redo it every single time makes a request to a particular endpoint.
+>
+> A key-value store is actually one of the best thing you can use for that.
+>
+> Another example:<br>
+> If we have some expensive SQL query that queries every user in the database,
+> we can cache that temporarily in a key-value store.
+
+**One of the things about key-value store is, you don't store data in there that
+you can't afford to lose**.
+
+In this course we'll using Redis (Remote dictionary server).
+
+[Redis Notes](./redis.md)
+
+## Q&A
+
+- Is database migration a common occurrence?
+
+> Yes. So database migration from the perspective of "we have one schema in our
+> SQL database and we need to have a different schema in our database", that's
+> called a migration.
+>
+> It expensive and not fun, if we can avoid it, we should.
+
+- What about migrating one database to another type database? Like if we need to
+move from PostgreSQL to MongoDB, what's that look like?
+
+> The instructor doesn't see that scenario often. We need to have a very, very,
+> very good reason and even if we find the reason, that might still not worth
+> it to move from one database to another. Migrating database is really tough.
+
+## General Advice
+
+**In general, when you're making technical choices, be as boring as  possible**.
+
+**Debugging the cache is the worst**.
+
+**Have a problem to fix, don't try to solve a problem that we don't have yet
+because we usually not end up solving the right problem**.
+
 ## References
 
 - [Course website](https://btholt.github.io/complete-intro-to-databases/).
