@@ -5,6 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "4.17.3",
-    "redis": "3.0.2"
+    "redis": "3.1.1"
   }
 }
